@@ -8,18 +8,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
+          <router-link class="nav-link active"  aria-current="page" to="/">Home</router-link>
           
            
         </li>
          <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" to="/feed">Feed</router-link>
+          <router-link class="nav-link active" v-if = "isLoggedIn" aria-current="page" to="/feed">Feed</router-link>
         </li>
           <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" to="/register">Register</router-link>
+          <router-link class="nav-link active" v-if = "isNotLoggedIn" aria-current="page" to="/register">Register</router-link>
         </li>
           <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" to="/signin">Login</router-link>
+          <router-link class="nav-link active" v-if = "isNotLoggedIn" aria-current="page" to="/signin">Login</router-link>
         </li>
      
      
@@ -43,6 +43,7 @@
 
     const router = useRouter();
     const isLoggedIn = ref(false);
+    const isNotLoggedIn = ref(true);
   
 
     let auth;
@@ -53,9 +54,11 @@
 
         if (user){
           isLoggedIn.value = true;
+          isNotLoggedIn.value = false;
         }
         else{
           isLoggedIn.value =  false;
+          isNotLoggedIn.value = true;
         }
 
       });

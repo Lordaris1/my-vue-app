@@ -52,8 +52,8 @@
             createUserWithEmailAndPassword(getAuth(),email.value,password.value)
             .then((data) =>{
                 console.log("Successfully Registered!");
-                console.log(auth.currentUser)
-                router.push('/feed')
+                // console.log(auth.currentUser)
+                // router.push('/feed')
 
             })
             .catch((error) =>{
